@@ -22,11 +22,13 @@ function handleNoClick() {
     noButton.textContent = messages[messageIndex];
     messageIndex = (messageIndex + 1) % messages.length;
 
-    // Increase Yes Button Size
-    const currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
-    yesButton.style.fontSize = `${currentSize * 1.1}px`;
+    // Increase Yes Button Size (But Keep It Manageable)
+    let currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
+    if (currentSize < 50) { // Limit max size
+        yesButton.style.fontSize = `${currentSize * 1.2}px`;
+    }
 
-    // Move No Button Randomly
+    // Move No Button to a Random Position
     moveNoButton(noButton);
 }
 
@@ -47,16 +49,8 @@ function handleYesClick() {
     window.location.href = "yes_page.html";
 }
 
-// Open Love Letter Effect
-function openLetter() {
-    document.querySelector('.letter-content').classList.toggle('hidden');
-}
-
-// Auto-play background music
+// Attach Event Listeners
 document.addEventListener("DOMContentLoaded", function () {
-    const music = document.getElementById("bg-music");
-    if (music) {
-        music.volume = 0.5;
-        music.play().catch(error => console.log("Autoplay blocked:", error));
-    }
+    document.querySelector('.no-button').addEventListener('click', handleNoClick);
+    document.querySelector('.yes-button').addEventListener('click', handleYesClick);
 });
