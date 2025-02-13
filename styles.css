@@ -1,73 +1,83 @@
-/* Letter Container */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #fffaf0;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+}
+
+/* Letter Styles */
 .letter-container {
-    cursor: pointer;
-    display: inline-block;
-    margin: 20px auto;
     position: relative;
-    transition: transform 0.3s ease-in-out;
+    width: 250px;
+    height: 150px;
+    margin: 20px auto;
+    cursor: pointer;
 }
 
 .letter {
-    width: 250px;
-    height: 150px;
-    background: #f9e0bb;
-    border: 2px solid #d4a373;
+    background-color: #ffebcd;
+    border: 2px solid #d2691e;
     border-radius: 10px;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: all 0.5s ease-in-out;
-}
-
-.letter.open {
-    transform: rotateX(180deg);
-    background: #fff;
-    border: 2px solid #ff8c8c;
+    padding: 10px;
+    text-align: left;
+    display: none;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
 }
 
 .letter-content {
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
+    font-size: 14px;
 }
 
-.letter.open .letter-content {
-    opacity: 1;
-}
-
-.letter-text {
-    font-size: 18px;
+.letter-cover {
+    background-color: #ffcc99;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-weight: bold;
     color: #333;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
 }
 
-/* Floating Hearts */
+/* Button Fix */
+.buttons {
+    margin-top: 15px;
+}
+
+.yes-button, .no-button {
+    font-size: 18px;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.yes-button {
+    background-color: #ff69b4;
+    color: white;
+}
+
+.no-button {
+    background-color: #ff4444;
+    color: white;
+}
+
+/* Heart Animations */
 .hearts-container {
-    position: fixed;
-    top: 0;
-    left: 0;
+    position: absolute;
     width: 100%;
     height: 100%;
     pointer-events: none;
-    overflow: hidden;
 }
 
-.heart {
-    position: absolute;
-    font-size: 24px;
-    opacity: 0.7;
-    animation: floatUp 5s linear infinite;
-}
-
-@keyframes floatUp {
-    from {
-        transform: translateY(100vh);
-        opacity: 1;
-    }
-    to {
-        transform: translateY(-10vh);
-        opacity: 0;
-    }
+.gif_container img {
+    width: 120px;
 }
