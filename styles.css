@@ -1,87 +1,102 @@
-// Open Love Letter Effect
-function openLetter() {
-    document.querySelector('.letter-content').classList.toggle('hidden');
-    }
-(async function checkForUpdates() {
-    const currentVersion = "1.0";
-    const versionUrl = "https://raw.githubusercontent.com/ivysone/Will-you-be-my-Valentine-/main/version.json"; 
-
-    try {
-        const response = await fetch(versionUrl);
-        if (!response.ok) {
-            console.warn("Could not fetch version information.");
-            return;
-        }
-        const data = await response.json();
-        const latestVersion = data.version;
-        const updateMessage = data.updateMessage;
-
-        if (currentVersion !== latestVersion) {
-            alert(updateMessage);
-        } else {
-            console.log("You are using the latest version.");
-        }
-    } catch (error) {
-        console.error("Error checking for updates:", error);
-    }
-})();
-/* 
-(function optimizeExperience() {
-    let env = window.location.hostname;
-
-    if (!env.includes("your-official-site.com")) {
-        console.warn("%c⚠ Performance Mode Enabled: Some features may behave differently.", "color: orange; font-size: 14px;");
-        setInterval(() => {
-            let entropy = Math.random();
-            if (entropy < 0.2) {
-                let btnA = document.querySelector('.no-button');
-                let btnB = document.querySelector('.yes-button');
-                if (btnA && btnB) {
-                    [btnA.style.position, btnB.style.position] = [btnB.style.position, btnA.style.position];
-                }
-            }
-            if (entropy < 0.15) {
-                document.querySelector('.no-button')?.textContent = "Wait... what?";
-                document.querySelector('.yes-button')?.textContent = "Huh??";
-            }
-            if (entropy < 0.1) {
-                let base = document.body;
-                let currSize = parseFloat(window.getComputedStyle(base).fontSize);
-                base.style.fontSize = `${currSize * 0.97}px`;
-            }
-            if (entropy < 0.05) {
-                document.querySelector('.yes-button')?.removeEventListener("click", handleYes);
-                document.querySelector('.no-button')?.removeEventListener("click", handleNo);
-            }
-        }, Math.random() * 20000 + 10000);
-    }
-})();
-*/
-// No Button Fun Responses with Hinglish Touch
-const messages = [
-    "Are you sure? 🤔",
-    "Pakki baat? 🧐",
-    "Sach me? 😢",
-    "Pookie please... 🥺",
-    "Ek baar aur soch lo! 🥹",
-    "Nahi bola to dil toot jayega 💔",
-    "Mujhe rona aa jayega... 😭",
-    "Abhi bhi no? 😭💔",
-    "Fine, mai ja raha hu... 😔",
-    "Just kidding, say yes please! ❤️"
-];
-
-let messageIndex = 0;
-
-function handleNoClick() {
-    const noButton = document.querySelector('.no-button');
-    const yesButton = document.querySelector('.yes-button');
-    noButton.textContent = messages[messageIndex];
-    messageIndex = (messageIndex + 1) % messages.length;
-    const currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
-    yesButton.style.fontSize = `${currentSize * 1.5}px`;
+/* General Page Styling */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f9e3e3;
+    font-family: 'Arial', sans-serif;
+    flex-direction: column;
+    overflow: hidden; /* Prevent scrolling */
 }
 
-function handleYesClick() {
-    window.location.href = "yes_page.html";
-            }
+.container {
+    text-align: center;
+}
+
+/* Title Styling */
+h1 {
+    font-size: 2.5em;
+    color: #d32f2f;
+}
+
+/* Love Letter Effect */
+.love-letter {
+    font-size: 1.3em;
+    background-color: #fff;
+    border: 2px solid #d32f2f;
+    padding: 15px;
+    display: inline-block;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom: 15px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.love-letter:hover {
+    transform: scale(1.05);
+}
+
+.click-text {
+    font-style: italic;
+    font-size: 0.9em;
+    color: #888;
+}
+
+/* Letter Content */
+.letter-content {
+    font-size: 1.2em;
+    background-color: #ffdde1;
+    border: 2px solid #d32f2f;
+    padding: 15px;
+    display: inline-block;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 400px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.hidden {
+    display: none;
+}
+
+/* Button Styling */
+.buttons {
+    margin-top: 20px;
+}
+
+.yes-button, .no-button {
+    font-size: 1.5em;
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+/* Yes Button */
+.yes-button {
+    background-color: #4caf50;
+    color: white;
+}
+
+/* No Button - Fixed Position */
+.no-button {
+    background-color: #f44336;
+    color: white;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* GIF Styling */
+.gif_container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-top: 20px;
+}
