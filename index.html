@@ -5,42 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dear Ritisha ❤️</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
+    <script defer src="script.js"></script>
 </head>
 <body>
+
+    <!-- Floating Hearts Animation -->
+    <div class="hearts-container"></div>
+
     <div class="container">
         <h1>Dear Ritisha Verma ❤️</h1>
-        <h2 class="funny-heading">Ek Chhoti Si Baat... 👀</h2>
-        
-        <!-- Letter Design -->
-        <div class="letter-container" onclick="openLetter()">
-            <div class="letter">
-                <div class="letter-content">
-                    <p>
-                        Jab bhi tu hasta hai, dil mera bhi khush ho jaata hai,  
-                        Teri baatein sun ke lagta hai, time slow ho jaata hai! ⏳💖<br>
-                        Tu music jaisi hai, hamesha melody wali vibe,  
-                        Tere bina ye duniya lagti hai thodi si dry! 🎶✨<br>
-                        <br>
-                        Bas itna kehna tha... Tu best hai! 😌❤️
-                    </p>
-                </div>
-            </div>
+        <h2>Ek Chhoti Si Baat... 👀</h2>
+
+        <!-- Love Letter -->
+        <div class="letter-container" id="letterBox">
             <div class="letter-cover">Click to Open</div>
+            <div class="letter" id="letter">
+                <p>Meri baatein shayari lagti hain,  
+                Par dil se likhta hoon main,  
+                Tu haan bole ya na,  
+                Par pyaar karta hoon main! ❤️</p>
+            </div>
         </div>
 
+        <!-- Buttons -->
         <div class="buttons">
-            <button class="yes-button" onclick="handleYesClick()">Hehe 😳</button>
-            <button class="no-button" onclick="handleNoClick()">Nahi 😆</button>
+            <button class="yes-button" id="yesBtn">Hehe 😳</button>
+            <button class="no-button" id="noBtn">Nahi 😆</button>
         </div>
 
+        <!-- Cute GIF -->
         <div class="gif_container">
-            <img src="https://media1.giphy.com/media/VM1fcpu2bKs1e2Kdbj/giphy.gif" alt="Cute GIF">
+            <img src="https://media.tenor.com/VrJZN6vPb30AAAAi/cute-cat.gif" alt="Cute Blushing Cat">
         </div>
-
-        <div class="hearts-container"></div>
     </div>
 
-    <script src="script.js"></script>
 </body>
 </html>
