@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const randomX = Math.random() * maxX;
         const randomY = Math.random() * maxY;
 
+        noButton.style.position = "absolute";
         noButton.style.left = `${randomX}px`;
         noButton.style.top = `${randomY}px`;
 
@@ -23,22 +24,23 @@ document.addEventListener("DOMContentLoaded", function () {
         } else if (moveCount === 5) {
             noButton.innerText = "Soch le!";
         } else if (moveCount > 6) {
-            noButton.style.display = "none"; // Hide button after too many moves
-            messageBox.innerHTML = "Fine, mai ja raha hu... 😔";
-            messageBox.style.background = "red";
-            messageBox.style.padding = "15px";
-            messageBox.style.color = "white";
-            messageBox.style.borderRadius = "10px";
+            noButton.style.display = "none"; // Hide "No" button after too many moves
         }
     }
 
     // Attach event to "No" button
     noButton.addEventListener("mouseover", moveNoButton);
 
-    // When clicking "Yes" button, show final message
+    // When clicking "Yes" button, show final message and fix position
     yesButton.addEventListener("click", function () {
         messageBox.innerHTML = "Yay! ❤️ Tum meri Valentine ban gayi!";
         messageBox.style.color = "green";
         messageBox.style.fontSize = "24px";
+
+        // Ensure "No" button is hidden and "Yes" button is centered properly
+        noButton.style.display = "none"; 
+        yesButton.style.position = "relative"; // Reset to avoid absolute positioning issues
+        yesButton.style.left = "0";
+        yesButton.style.top = "0";
     });
 });
