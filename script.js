@@ -19,8 +19,10 @@ function handleNoClick() {
     const yesButton = document.querySelector('.yes-button');
     noButton.textContent = messages[messageIndex];
     messageIndex = (messageIndex + 1) % messages.length;
+    
+    // Make the "Yes" button bigger each time
     const currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
-    yesButton.style.fontSize = `${currentSize * 1.5}px`;
+    yesButton.style.fontSize = `${currentSize * 1.2}px`;
 }
 
 // Handle Yes Click - Redirect to Love Page
@@ -30,12 +32,16 @@ function handleYesClick() {
 
 // Open Love Letter Effect
 function openLetter() {
-    document.querySelector('.letter-content').classList.toggle('hidden');
+    const letterContent = document.querySelector('.letter-content');
+    letterContent.classList.toggle('hidden');
 }
 
-// Auto-play background music
-document.addEventListener("DOMContentLoaded", function () {
+// Auto-play background music with user interaction
+function startMusic() {
     const music = document.getElementById("bg-music");
     music.volume = 0.5;
     music.play();
-});
+    
+    // Hide the overlay after music starts
+    document.getElementById("music-overlay").style.display = "none";
+}
