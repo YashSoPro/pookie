@@ -24,13 +24,22 @@ function handleNoClick() {
 
     // Increase Yes Button Size
     const currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
-    yesButton.style.fontSize = `${currentSize * 1.2}px`;
+    yesButton.style.fontSize = `${currentSize * 1.1}px`;
 
-    // Move No Button Randomly Within Screen Bounds
-    const maxX = window.innerWidth - noButton.offsetWidth - 20;
-    const maxY = window.innerHeight - noButton.offsetHeight - 20;
-    noButton.style.left = `${Math.max(10, Math.random() * maxX)}px`;
-    noButton.style.top = `${Math.max(10, Math.random() * maxY)}px`;
+    // Move No Button Randomly
+    moveNoButton(noButton);
+}
+
+// Function to Move No Button Randomly Within Viewport
+function moveNoButton(button) {
+    const maxX = window.innerWidth - button.offsetWidth - 20;
+    const maxY = window.innerHeight - button.offsetHeight - 20;
+    
+    const randomX = Math.max(10, Math.random() * maxX);
+    const randomY = Math.max(10, Math.random() * maxY);
+
+    button.style.left = `${randomX}px`;
+    button.style.top = `${randomY}px`;
 }
 
 // Handle Yes Click - Redirect to Love Page
@@ -46,6 +55,8 @@ function openLetter() {
 // Auto-play background music
 document.addEventListener("DOMContentLoaded", function () {
     const music = document.getElementById("bg-music");
-    music.volume = 0.5;
-    music.play();
+    if (music) {
+        music.volume = 0.5;
+        music.play().catch(error => console.log("Autoplay blocked:", error));
+    }
 });
