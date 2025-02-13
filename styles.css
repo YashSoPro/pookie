@@ -1,80 +1,39 @@
-body {
+.letter-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #f9e3e3;
-    font-family: 'Arial', sans-serif;
-    flex-direction: column;
-    position: relative;
-    overflow: hidden;
-}
-
-.container {
-    text-align: center;
-}
-
-h1 {
-    font-size: 2.5em;
-    color: #d32f2f;
-}
-
-.funny-heading {
-    font-size: 1.8em;
-    color: #444;
-    font-style: italic;
-}
-
-.thingy-text {
-    font-size: 1.4em;
-    color: #555;
-    margin-top: 10px;
-}
-
-.buttons {
-    margin-top: 20px;
-}
-
-.yes-button, .no-button {
-    font-size: 1.5em;
-    padding: 10px 20px;
-    margin-right: 10px;
-    border: none;
-    border-radius: 5px;
+    width: 300px;
+    height: 200px;
+    background: #f9e0bb;
+    border: 2px solid #d4a373;
+    border-radius: 10px;
     cursor: pointer;
-    transition: transform 0.2s ease-in-out;
+    transition: transform 0.5s ease-in-out;
+    position: relative;
 }
 
-.yes-button {
-    background-color: #4caf50;
-    color: white;
+.letter-container:hover {
+    transform: scale(1.05);
 }
 
-.no-button {
-    background-color: #f44336;
-    color: white;
+.letter-content {
+    display: none;
+    text-align: center;
+    font-size: 16px;
+    padding: 10px;
+    font-family: "Courier New", Courier, monospace;
 }
 
-.yes-button:hover, .no-button:hover {
-    transform: scale(1.1);
+.letter.open .letter-text {
+    display: none;
 }
 
-/* Floating Hearts Animation */
-.floating-heart {
+.letter.open .letter-content {
+    display: block;
+}
+
+.music-container {
     position: absolute;
-    font-size: 24px;
-    animation: floatUp 5s linear infinite;
-    opacity: 0.7;
-}
-
-@keyframes floatUp {
-    from {
-        bottom: 0;
-        opacity: 1;
-    }
-    to {
-        bottom: 100vh;
-        opacity: 0;
-    }
+    width: 0;
+    height: 0;
 }
