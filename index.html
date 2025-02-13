@@ -7,42 +7,41 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-    <!-- Floating Hearts -->
-    <div class="hearts-container"></div>
-
-    <!-- Music Auto-play -->
-    <audio id="bgMusic" loop>
-        <source src="https://www.mfiles.co.uk/mp3-downloads/Canon-in-D.mp3" type="audio/mp3">
+    <audio id="bg-music" loop autoplay>
+        <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mp3">
     </audio>
 
     <div class="container">
         <h1>Dear Ritisha Verma ❤️</h1>
-        <h2>Ek Chhoti Si Baat... 👀</h2>
+        <p class="small-text">Ek Chhoti Si Baat... 👀</p>
 
-        <!-- Love Letter -->
-        <div class="letter-container" id="letterBox">
-            <div class="letter-cover">Click to Open</div>
-            <div class="letter">
-                <p>Meri baatein shayari lagti hain,  
-                Par dil se likhta hoon main,  
-                Tu haan bole ya na,  
-                Par pyaar karta hoon main! ❤️</p>
-            </div>
+        <button class="open-button" onclick="openLetter()">Click to Open</button>
+
+        <div class="letter hidden">
+            <p id="love-text">
+                Hehe 😳 Nahi 😆<br><br>
+
+                Par sun, dil ki baat toh sunni padegi! 💖<br><br>
+
+                Teri hasi jaise ek pyara sa geet,<br>
+                Teri aankhon mein basa ek sweet tweet. ✨<br><br>
+
+                Tu Ambarsariya, main tera crazy fan,<br>
+                Mera dil karta bas tujhse hi baat kare har din har jaan! ❤️<br><br>
+
+                Mummy ne bola "padhai karle bhai,"<br>
+                Par mera mann bas Ritisha ke paas hi jai! 😂💘<br><br>
+
+                Sunle ab tu meri dil ki awaaz,<br>
+                Tu 'haan' bol, warna Himalaya ke paas! 🏔️🤣
+            </p>
         </div>
 
-        <!-- Buttons -->
-        <div class="buttons">
-            <button class="yes-button" id="yesBtn">Hehe 😳</button>
-            <button class="no-button" id="noBtn">Nahi 😆</button>
-        </div>
-
-        <!-- GIF -->
-        <div class="gif_container">
-            <img id="loveGif" src="https://media.tenor.com/VrJZN6vPb30AAAAi/cute-cat.gif" alt="Cute Blushing Cat">
+        <div class="gif_container hidden">
+            <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbW5lenZyZHI5OXM2eW95b3pmMG40cWVrMDhtNjVuM3A4dGNxa2g2dSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/VM1fcpu2bKs1e2Kdbj/giphy.gif" alt="Cute GIF">
         </div>
     </div>
-
+    
     <script src="script.js"></script>
 </body>
 </html>
