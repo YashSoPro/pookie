@@ -1,3 +1,21 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffe6e6;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container */
+.container {
+    position: relative;
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Letter Styling */
 .letter-container {
     display: flex;
     justify-content: center;
@@ -6,34 +24,4 @@
     height: 200px;
     background: #f9e0bb;
     border: 2px solid #d4a373;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: transform 0.5s ease-in-out;
-    position: relative;
-}
-
-.letter-container:hover {
-    transform: scale(1.05);
-}
-
-.letter-content {
-    display: none;
-    text-align: center;
-    font-size: 16px;
-    padding: 10px;
-    font-family: "Courier New", Courier, monospace;
-}
-
-.letter.open .letter-text {
-    display: none;
-}
-
-.letter.open .letter-content {
-    display: block;
-}
-
-.music-container {
-    position: absolute;
-    width: 0;
-    height: 0;
-}
+    border-radius
