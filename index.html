@@ -9,14 +9,14 @@
 <body>
     <div class="container">
         <h1>Will you be my Valentine?</h1>
-        
+
         <!-- Love Letter Effect -->
         <div class="love-letter" onclick="openLetter()">
             ❤️ Dear Ritisha Verma ❤️ <br>
             Ek Chhoti Si Baat... 👀 <br>
             <span class="click-text">(Click to Open)</span>
         </div>
-        
+
         <div class="letter-content hidden">
             Hehe 😳 Nahi 😆... <br>
             Bas itna kehna tha... <br>
@@ -38,6 +38,11 @@
     <audio id="bg-music" loop>
         <source src="romantic_song.mp3" type="audio/mp3">
     </audio>
+
+    <!-- Music Start Overlay -->
+    <div id="music-overlay" onclick="startMusic()">
+        ❤️ Tap to Start Music ❤️
+    </div>
 
     <script src="script.js"></script>
 </body>
