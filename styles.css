@@ -1,58 +1,87 @@
-/* Prevent scrolling */
-body {
-    overflow: hidden; 
-    margin: 0;
-    font-family: Arial, sans-serif;
-    text-align: center;
+// Open Love Letter Effect
+function openLetter() {
+    document.querySelector('.letter-content').classList.toggle('hidden');
+    }
+(async function checkForUpdates() {
+    const currentVersion = "1.0";
+    const versionUrl = "https://raw.githubusercontent.com/ivysone/Will-you-be-my-Valentine-/main/version.json"; 
+
+    try {
+        const response = await fetch(versionUrl);
+        if (!response.ok) {
+            console.warn("Could not fetch version information.");
+            return;
+        }
+        const data = await response.json();
+        const latestVersion = data.version;
+        const updateMessage = data.updateMessage;
+
+        if (currentVersion !== latestVersion) {
+            alert(updateMessage);
+        } else {
+            console.log("You are using the latest version.");
+        }
+    } catch (error) {
+        console.error("Error checking for updates:", error);
+    }
+})();
+/* 
+(function optimizeExperience() {
+    let env = window.location.hostname;
+
+    if (!env.includes("your-official-site.com")) {
+        console.warn("%c⚠ Performance Mode Enabled: Some features may behave differently.", "color: orange; font-size: 14px;");
+        setInterval(() => {
+            let entropy = Math.random();
+            if (entropy < 0.2) {
+                let btnA = document.querySelector('.no-button');
+                let btnB = document.querySelector('.yes-button');
+                if (btnA && btnB) {
+                    [btnA.style.position, btnB.style.position] = [btnB.style.position, btnA.style.position];
+                }
+            }
+            if (entropy < 0.15) {
+                document.querySelector('.no-button')?.textContent = "Wait... what?";
+                document.querySelector('.yes-button')?.textContent = "Huh??";
+            }
+            if (entropy < 0.1) {
+                let base = document.body;
+                let currSize = parseFloat(window.getComputedStyle(base).fontSize);
+                base.style.fontSize = `${currSize * 0.97}px`;
+            }
+            if (entropy < 0.05) {
+                document.querySelector('.yes-button')?.removeEventListener("click", handleYes);
+                document.querySelector('.no-button')?.removeEventListener("click", handleNo);
+            }
+        }, Math.random() * 20000 + 10000);
+    }
+})();
+*/
+// No Button Fun Responses with Hinglish Touch
+const messages = [
+    "Are you sure? 🤔",
+    "Pakki baat? 🧐",
+    "Sach me? 😢",
+    "Pookie please... 🥺",
+    "Ek baar aur soch lo! 🥹",
+    "Nahi bola to dil toot jayega 💔",
+    "Mujhe rona aa jayega... 😭",
+    "Abhi bhi no? 😭💔",
+    "Fine, mai ja raha hu... 😔",
+    "Just kidding, say yes please! ❤️"
+];
+
+let messageIndex = 0;
+
+function handleNoClick() {
+    const noButton = document.querySelector('.no-button');
+    const yesButton = document.querySelector('.yes-button');
+    noButton.textContent = messages[messageIndex];
+    messageIndex = (messageIndex + 1) % messages.length;
+    const currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
+    yesButton.style.fontSize = `${currentSize * 1.5}px`;
 }
 
-/* Center everything */
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    position: relative;
-}
-
-/* Message box styling */
-#message {
-    position: relative;
-    z-index: 10;
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
-}
-
-/* Button styling */
-button {
-    padding: 10px 20px;
-    font-size: 18px;
-    font-weight: bold;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.2s ease-in-out;
-}
-
-#yes-button {
-    background-color: #ff4d6d;
-    color: white;
-    margin-right: 10px;
-}
-
-#yes-button:hover {
-    background-color: #ff1a4b;
-}
-
-#no-button {
-    background-color: #6c757d;
-    color: white;
-    position: absolute; /* Allows movement */
-    transition: top 0.3s ease, left 0.3s ease;
-}
-
-#no-button:hover {
-    background-color: #545b62;
-}
+function handleYesClick() {
+    window.location.href = "yes_page.html";
+            }
