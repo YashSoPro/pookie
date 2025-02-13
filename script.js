@@ -1,40 +1,40 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Click-to-open letter animation
-    const letterContainer = document.querySelector('.letter-container');
-    const letter = document.querySelector('.letter');
-    const letterCover = document.querySelector('.letter-cover');
+    // Love Letter Click Event
+    const letterCover = document.querySelector(".letter-cover");
+    const letter = document.querySelector(".letter");
 
-    letterContainer.addEventListener("click", function () {
-        letter.style.display = "block";
+    letterCover.addEventListener("click", function () {
         letterCover.style.display = "none";
+        letter.style.display = "block";
     });
 
-    // Button interactions
-    const yesButton = document.querySelector(".yes-button");
-    const noButton = document.querySelector(".no-button");
+    // Buttons Interaction
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
 
-    yesButton.addEventListener("click", function () {
-        alert("Aww, that's cute! 😳💖");
-        createFloatingText("Yay! ❤️", yesButton);
+    yesBtn.addEventListener("click", function () {
+        alert("Awww 😍, I knew it!");
     });
 
-    noButton.addEventListener("click", function () {
-        alert("Hehe, just kidding! 😂");
-        createFloatingText("Arre! 😆", noButton);
+    noBtn.addEventListener("click", function () {
+        alert("Arre yaar 😭, phir bhi pyaar toh hamesha rahega!");
     });
 
-    // Floating Hearts Effect
-    function createFloatingHearts() {
-        let heart = document.createElement("div");
-        heart.innerHTML = "❤️";
-        heart.style.position = "absolute";
-        heart.style.left = Math.random() * window.innerWidth + "px";
-        heart.style.top = window.innerHeight + "px";
-        heart.style.fontSize = Math.random() * 20 + 10 + "px";
-        heart.style.animation = "floatUp 4s linear infinite";
-        document.body.appendChild(heart);
+    // Floating Hearts Animation
+    function createHeart() {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = Math.random() * 2 + 3 + "s";
+        document.querySelector(".hearts-container").appendChild(heart);
 
         setTimeout(() => {
+            heart.remove();
+        }, 5000);
+    }
+
+    setInterval(createHeart, 500);
+});        setTimeout(() => {
             heart.remove();
         }, 4000);
     }
