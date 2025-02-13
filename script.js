@@ -1,49 +1,44 @@
-// No Button Fun Responses with Hinglish Touch
-const messages = [
-    "Are you sure? 🤔",
-    "Pakki baat? 🧐",
-    "Sach me? 😢",
-    "Pookie please... 🥺",
-    "Ek baar aur soch lo! 🥹",
-    "Nahi bola to dil toot jayega 💔",
-    "Mujhe rona aa jayega... 😭",
-    "Abhi bhi no? 😭💔",
-    "Fine, mai ja raha hu... 😔",
-    "Just kidding, say yes please! ❤️"
-];
-
-let messageIndex = 0;
-
-// Handle No Button Click
-function handleNoClick() {
-    const noButton = document.querySelector('.no-button');
-    const yesButton = document.querySelector('.yes-button');
-
-    // Change no button text with new Hinglish message
-    noButton.textContent = messages[messageIndex];
-    messageIndex = (messageIndex + 1) % messages.length;
-
-    // Increase Yes Button Size
-    const currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
-    yesButton.style.fontSize = `${currentSize * 1.2}px`;
-
-    // Ensure No Button stays on screen
-    window.scrollTo(0, 0);
-}
-
-// Handle Yes Click - Redirect to Love Page
-function handleYesClick() {
-    window.location.href = "yes_page.html";
-}
-
-// Open Love Letter Effect
-function openLetter() {
-    document.querySelector('.letter-content').classList.toggle('hidden');
-}
-
-// Auto-play background music
 document.addEventListener("DOMContentLoaded", function () {
-    const music = document.getElementById("bg-music");
-    music.volume = 0.5;
-    music.play();
+    const noButton = document.getElementById("no-button");
+    const yesButton = document.getElementById("yes-button");
+    const messageBox = document.getElementById("message");
+
+    let moveCount = 0; 
+
+    // Function to move the "No" button randomly
+    function moveNoButton() {
+        moveCount++;
+        const maxX = window.innerWidth - noButton.offsetWidth - 20;
+        const maxY = window.innerHeight - noButton.offsetHeight - 20;
+
+        const randomX = Math.random() * maxX;
+        const randomY = Math.random() * maxY;
+
+        noButton.style.left = `${randomX}px`;
+        noButton.style.top = `${randomY}px`;
+
+        // Change text after multiple moves
+        if (moveCount === 3) {
+            noButton.innerText = "Pakka?";
+        } else if (moveCount === 5) {
+            noButton.innerText = "Soch le!";
+        } else if (moveCount > 6) {
+            noButton.style.display = "none"; // Hide button after too many moves
+            messageBox.innerHTML = "Fine, mai ja raha hu... 😔";
+            messageBox.style.background = "red";
+            messageBox.style.padding = "15px";
+            messageBox.style.color = "white";
+            messageBox.style.borderRadius = "10px";
+        }
+    }
+
+    // Attach event to "No" button
+    noButton.addEventListener("mouseover", moveNoButton);
+
+    // When clicking "Yes" button, show final message
+    yesButton.addEventListener("click", function () {
+        messageBox.innerHTML = "Yay! ❤️ Tum meri Valentine ban gayi!";
+        messageBox.style.color = "green";
+        messageBox.style.fontSize = "24px";
+    });
 });
