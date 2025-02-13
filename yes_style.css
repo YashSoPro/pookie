@@ -17,6 +17,12 @@ body {
     color: #d32f2f;
 }
 
+.celebration-text {
+    font-size: 2em;
+    color: #444;
+    font-style: italic;
+}
+
 .gif_container img {
     width: 100%; 
     max-width: 500px; 
