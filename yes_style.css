@@ -6,6 +6,16 @@ body {
     margin: 0;
     background-color: #f9e3e3;
     font-family: 'Arial', sans-serif;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* Heart animation */
+.heart-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
 
 .container {
@@ -17,6 +27,18 @@ body {
     color: #d32f2f;
 }
 
+/* Love Letter */
+.love-letter {
+    background: #fff3f3;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 1.3em;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    display: inline-block;
+    margin-top: 20px;
+}
+
+/* GIF */
 .gif_container img {
     width: 100%;
     max-width: 500px;
