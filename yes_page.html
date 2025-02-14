@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hehe, I Knew It! ❤️</title>
-    <link rel="stylesheet" href="yes_style.css">
+    <link rel="stylesheet" href="./yes_style.css">
 </head>
 <body>
     <div class="container">
@@ -12,10 +12,37 @@
         <p class="celebration-text">Ab to party honi chahiye na? 🎉</p>
         
         <div class="gif_container">
-            <img src="https://media4.giphy.com/media/9XY4f3FgFTT4QlaYqa/giphy.gif" alt="Happy GIF" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZmZkZGUxIi8+PHRleHQgeD0iMjAwIiB5PSIxNTAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSI4cHgiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIyNCIgZmlsbD0iI2QzMmYyZiI+8J+ZuiBDZWxlYnJhdGlvbiBUaW1lISA8L3RleHQ+PC9zdmc+'" loading="lazy">
+            <img src="https://media4.giphy.com/media/9XY4f3FgFTT4QlaYqa/giphy.gif" alt="Happy GIF">
         </div>
+        
+        <div class="thank-you-message">
+            <p>Thank you for making my day special! ❤️</p>
+            <p>You are amazing, Ritisha!</p>
+        </div>
+
+        <div class="heart-rain" id="heart-rain"></div>
     </div>
 
-    <script src="yes_script.js"></script>
+    <script>
+        // Create heart rain
+        document.addEventListener('DOMContentLoaded', function() {
+            createHeartRain();
+        });
+
+        function createHeartRain() {
+            const container = document.getElementById('heart-rain');
+            const heartCount = 50;
+            
+            for (let i = 0; i <heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '❤️';
+                heart.style.left = `${Math.random() * 100}vw`;
+                heart.style.animationDuration = `${Math.random() * 3 + 2}s`;
+                heart.style.animationDelay = `${Math.random() * 5}s`;
+                container.appendChild(heart);
+            }
+        }
+    </script>
 </body>
 </html>
