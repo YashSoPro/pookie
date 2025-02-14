@@ -6,20 +6,24 @@ body {
     margin: 0;
     background-color: #f9e3e3;
     font-family: 'Arial', sans-serif;
-    text-align: center;
     overflow: hidden;
+    position: relative;
 }
 
-/* Heart animation */
+/* Floating hearts */
 .heart-container {
     position: absolute;
     width: 100%;
     height: 100%;
     overflow: hidden;
+    z-index: 0; /* Keep hearts in the background */
 }
 
+/* Container */
 .container {
     text-align: center;
+    position: relative;
+    z-index: 2; /* Ensure text and buttons stay on top */
 }
 
 .header_text {
@@ -27,20 +31,8 @@ body {
     color: #d32f2f;
 }
 
-/* Love Letter */
-.love-letter {
-    background: #fff3f3;
-    padding: 20px;
-    border-radius: 10px;
-    font-size: 1.3em;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    display: inline-block;
-    margin-top: 20px;
-}
-
-/* GIF */
 .gif_container img {
-    width: 100%;
-    max-width: 500px;
-    height: auto;
+    width: 100%; 
+    max-width: 500px; 
+    height: auto; 
 }
