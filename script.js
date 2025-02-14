@@ -13,96 +13,95 @@ const messages = [
 ];
 
 let messageIndex = 0;
-let noButtonClicked = 0;
-
-// Generate random position for No button
-function getRandomPosition() {
-    const container = document.querySelector('.container');
-    const noButton = document.querySelector('.no-button');
-    
-    const maxX = container.clientWidth - noButton.offsetWidth;
-    const maxY = container.clientHeight - noButton.offsetHeight;
-    
-    const randomX = Math.max(0, Math.min(maxX, Math.random() * maxX));
-    const randomY = Math.max(0, Math.min(maxY, Math.random() * maxY));
-    
-    return { x: randomX, y: randomY };
-}
-
-// Create flying hearts
-function createHearts() {
-    for (let i = 0; i < 10; i++) {
-        setTimeout(() => {
-            const heart = document.createElement('div');
-            heart.innerHTML = '❤️';
-            heart.classList.add('heart');
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDelay = Math.random() * 2 + 's';
-            document.body.appendChild(heart);
-            
-            // Remove heart after animation completes
-            setTimeout(() => {
-                heart.remove();
-            }, 4000);
-        }, i * 400);
-    }
-}
 
 // Handle No Button Click
 function handleNoClick() {
     const noButton = document.querySelector('.no-button');
     const yesButton = document.querySelector('.yes-button');
-    
-    // Change no button text
+
+    // Change no button text with new Hinglish message  
     noButton.textContent = messages[messageIndex];  
-    messageIndex = (messageIndex + 1) % messages.length;
-    
-    // Move No button to random position after a few clicks
-    noButtonClicked++;
-    if (noButtonClicked > 2) {
-        const newPos = getRandomPosition();
-        noButton.style.position = 'absolute';
-        noButton.style.left = newPos.x + 'px';
-        noButton.style.top = newPos.y + 'px';
-    }
-    
+    messageIndex = (messageIndex + 1) % messages.length;  
+
     // Increase Yes Button Size  
     const currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);  
-    yesButton.style.fontSize = `${currentSize * 1.1}px`;
-    
-    // Add some scale and glow to Yes button
-    yesButton.style.transform = `scale(${1 + (noButtonClicked * 0.05)})`;
-    yesButton.style.boxShadow = `0 0 ${5 + noButtonClicked}px rgba(76, 175, 80, 0.5)`;
-    
-    // Create flying hearts after several clicks
-    if (noButtonClicked > 5) {
-        createHearts();
-    }
+    yesButton.style.fontSize = `${currentSize * 1.2}px`;  
+
+    // Ensure No Button stays on screen  
+    window.scrollTo(0, 0);
 }
 
-// Handle Yes Click
+// Handle Yes Click - Redirect to Love Page
 function handleYesClick() {
-    // Create many hearts before redirecting
-    createHearts();
-    setTimeout(() => {
-        window.location.href = "yes_page.html";
-    }, 1000);
+    window.location.href = "yes_page.html";
 }
 
 // Open Love Letter Effect
 function openLetter() {
-    const letterContent = document.querySelector('.letter-content');
-    letterContent.classList.remove('hidden');
-    setTimeout(() => {
-        letterContent.classList.add('visible');
-    }, 10);
+    document.querySelector('.letter-content').classList.toggle('hidden');
 }
 
-// Try to play background music with user interaction
-document.addEventListener('click', function() {
-    const music = document.getElementById('bg-music');
-    if (music) {
-        music.volume = 0.3;
-        music.play().catch(e => console.log('Audio playback was not allowed'));
+// Music Player Functions
+function playSong(songUrl, element) {
+    const audioPlayer = document.getElementById('current-song');
+    const allSongs = document.querySelectorAll('.song');
+    
+    // Remove playing class from all songs
+    allSongs.forEach(song => song.classList.remove('playing'));
+    
+    // Add playing class to clicked song
+    element.classList.add('playing');
+    
+    // Set new song source and play
+    audioPlayer.src = songUrl;
+    audioPlayer.play();
+    
+    // Pause background music if it's playing
+    const bgMusic = document.getElementById('bg-music');
+    bgMusic.pause();
+}
+
+// Memory Card Flip Function
+function flipCard(card) {
+    card.classList.toggle('flipped');
+}
+
+// Create floating hearts
+function createFloatingHearts() {
+    const container = document.querySelector('body');
+    const heartCount = 15;
+    
+    for (let i = 0; i <heartCount; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'floating-heart';
+        heart.innerHTML = '❤️';
+        heart.style.left = `${Math.random() * 100}vw`;
+        heart.style.animationDuration = `${Math.random() * 3 + 2}s`;
+        heart.style.animationDelay = `${Math.random() * 2}s`;
+        container.appendChild(heart);
     }
-}, { once: true });
+}
+
+// Auto-play background music and initialize hearts
+document.addEventListener("DOMContentLoaded", function () {
+    const music = document.getElementById("bg-music");
+    music.volume = 0.5;
+    
+    // Try to play music (may be blocked by browser)
+    const playPromise = music.play();
+    if (playPromise !== undefined) {
+        playPromise.catch(error => {
+            console.log("Auto-play was prevented by browser");
+        });
+    }
+    
+    // Create floating hearts
+    createFloatingHearts();
+    
+    // Add click-to-play music if auto-play was blocked
+    document.body.addEventListener('click', function() {
+        if (music.paused) {
+            music.play().catch(e => {});
+        }
+    }, { once: true });
+});
