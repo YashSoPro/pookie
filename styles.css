@@ -1,3 +1,4 @@
+
 body {
     display: flex;
     justify-content: center;
@@ -7,50 +8,92 @@ body {
     background-color: #f9e3e3;
     font-family: 'Arial', sans-serif;
     flex-direction: column;
+    overflow: hidden;
 }
 
+/* Container */
 .container {
     text-align: center;
 }
 
+/* Heading */
 h1 {
     font-size: 2.5em;
     color: #d32f2f;
 }
 
+/* Buttons */
 .buttons {
     margin-top: 20px;
 }
 
-.yes-button {
+.yes-button, .no-button {
     font-size: 1.5em;
     padding: 10px 20px;
-    margin-right: 10px;
-    background-color: #4caf50;
-    color: white;
+    margin: 10px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: transform 0.3s ease;
+    transition: 0.3s ease-in-out;
+}
+
+.yes-button {
+    background-color: #4caf50;
+    color: white;
+}
+
+.no-button {
+    background-color: #f44336;
+    color: white;
 }
 
 .yes-button:hover {
     transform: scale(1.1);
+    background-color: #388e3c;
 }
 
-.no-button {
-    font-size: 1.5em;
-    padding: 10px 20px;
-    background-color: #f44336;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+.no-button:hover {
+    transform: scale(1.1);
+    background-color: #d32f2f;
 }
 
+/* GIF */
 .gif_container img {
     max-width: 100%;
     height: auto;
     border-radius: 10px;
     margin-top: 20px;
+}
+
+/* Floating hearts */
+.heart-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.heart {
+    position: absolute;
+    bottom: -10px;
+    width: 25px;
+    height: 25px;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Red_heart_icon.svg/1024px-Red_heart_icon.svg.png');
+    background-size: cover;
+    animation: float 5s linear infinite;
+    opacity: 0.7;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+        opacity: 0.7;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh);
+        opacity: 0;
+    }
 }
