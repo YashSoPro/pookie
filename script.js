@@ -46,7 +46,7 @@ window.scrollTo(0, 0);
 
 // Handle Yes Click - Redirect to Love Page
 function handleYesClick() {
-window.location.href = "yes_page.html";
+    window.location.href = "yes_page.html";
 }
 
 // Open Love Letter Effect
