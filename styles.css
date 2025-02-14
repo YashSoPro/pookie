@@ -7,70 +7,45 @@ body {
     background-color: #f9e3e3;
     font-family: 'Arial', sans-serif;
     flex-direction: column;
-    overflow: hidden;
 }
 
 .container {
     text-align: center;
 }
 
-.glow-text {
+h1 {
     font-size: 2.5em;
     color: #d32f2f;
-    text-shadow: 0 0 5px #ff4d4d, 0 0 10px #ff6666, 0 0 15px #ff8080;
-    animation: glow 2s infinite alternate;
-}
-
-@keyframes glow {
-    from {
-        text-shadow: 0 0 5px #ff4d4d, 0 0 10px #ff6666, 0 0 15px #ff8080;
-    }
-    to {
-        text-shadow: 0 0 10px #ff8080, 0 0 15px #ff9999, 0 0 20px #ffb3b3;
-    }
 }
 
 .buttons {
     margin-top: 20px;
 }
 
-.yes-button, .no-button {
+.yes-button {
     font-size: 1.5em;
     padding: 10px 20px;
-    margin: 10px;
+    margin-right: 10px;
+    background-color: #4caf50;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: transform 0.2s ease-in-out;
+    transition: transform 0.3s ease;
 }
 
-.yes-button {
-    background-color: #4caf50;
+.yes-button:hover {
+    transform: scale(1.1);
 }
 
 .no-button {
+    font-size: 1.5em;
+    padding: 10px 20px;
     background-color: #f44336;
-    position: relative;
-}
-
-.no-button:hover {
-    transform: translateX(10px);
-}
-
-.hidden {
-    display: none;
-    font-size: 1.2em;
-    color: #d32f2f;
-    font-weight: bold;
-    max-width: 70%;
-    margin-top: 20px;
-    animation: typewriter 3s steps(40) forwards;
-}
-
-@keyframes typewriter {
-    from { width: 0; }
-    to { width: 100%; }
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .gif_container img {
@@ -78,21 +53,4 @@ body {
     height: auto;
     border-radius: 10px;
     margin-top: 20px;
-}
-
-/* Petal Falling Effect */
-.petal {
-    position: fixed;
-    width: 20px;
-    height: 20px;
-    background: url('https://i.imgur.com/R9AZ3Hv.png') no-repeat center;
-    background-size: cover;
-    pointer-events: none;
-    animation: fall linear infinite;
-}
-
-@keyframes fall {
-    to {
-        transform: translateY(100vh);
-    }
 }
