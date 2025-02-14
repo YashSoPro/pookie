@@ -1,52 +1,84 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ummm?</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="container">
-        <h1>Ummm??</h1>
+<!DOCTYPE html>  <html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>Ummm?</title>  
+    <link rel="stylesheet" href="styles.css">  
+</head>  
+<body>  
+    <div class="container">  
+        <h1>Ummm??</h1>  <!-- Love Letter Effect -->  
+    <div class="love-letter" onclick="openLetter()">  
+        ❤️ Dear Ritisha Verma ❤️ <br>  
+        Ek Chhoti Si Baat... 👀 <br>  
+        <span class="click-text">(Shhhh!)</span>  
+    </div>  
+      
+    <div class="letter-content hidden">  
+        Hehe 😳 Nahi 😆... <br>  
+        Bas itna kehna tha... <br>  
+        **Tum sabse pyaari, sabse special ❤️** <br>  
+        Tumhre bina life adhoori lagti hai 😍  
+    </div>  
 
-        <!-- Love Letter Effect -->
-        <div class="love-letter" onclick="openLetter()">
-            ❤️ Dear Ritisha Verma ❤️ <br>
-            Ek Chhoti Si Baat... 👀 <br>
-            <span class="click-text">(Shhhh!)</span>
-        </div>
+    <!-- Heartfelt Message Scroller -->  
+    <div class="message-scroller">  
+        <div class="scrolling-text">  
+            Your kindness makes our class brighter • The way you help everyone shows your beautiful heart • Your wise words always inspire me • Having you in 10th B makes every day special • Your smile lights up the classroom  
+        </div>  
+    </div>  
 
-        <div class="letter-content hidden">
-            Hehe 😳 Nahi 😆... <br>
-            Bas itna kehna tha... <br>
-            **Tum sabse pyaari, sabse special ❤️** <br>
-            Tumhre bina life adhoori lagti hai 😍
-        </div>
+    <div class="buttons">  
+        <button class="yes-button" onclick="handleYesClick()">Yes</button>  
+        <button class="no-button" onclick="handleNoClick()">No</button>  
+    </div>  
 
-        <!-- Heartfelt Message Scroller -->
-        <div class="message-scroller">
-            <div class="scrolling-text">
-                Your kindness makes our class brighter • The way you help everyone shows your beautiful heart • Your wise words always inspire me • Having you in 10th B makes every day special • Your smile lights up the classroom
-            </div>
-        </div>
+    <div class="gif_container">  
+        <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbW5lenZyZHI5OXM2eW95b3pmMG40cWVrMDhtNjVuM3A4dGNxa2g2dSZlcD12MV9pbnRlcm5naWZfYnlfaWQmY3Q9cw/VM1fcpu2bKs1e2Kdbj/giphy.gif" alt="Cute GIF">  
+    </div>  
 
-        <!-- Buttons -->
-        <div class="buttons">
-            <button class="yes-button" onclick="handleYesClick()">Yes</button>
-            <button class="no-button" onclick="handleNoClick()">No</button>
-        </div>
+    <!-- Personalized Music Player -->  
+    <div class="music-player">  
+        <h3>Songs That Remind Me of You</h3>  
+        <div class="playlist">  
+            <div class="song" onclick="playSong('https://open.spotify.com/track/4qRcjFkFqSpLBzcbLDt7HL?si=UE9aRq2vSQiGBrBVD7u4rA', this)">  
+                <span class="song-title">Ambarsariya</span>  
+                <span class="song-note">This sweet melody reminds me of your kind voice...</span>  
+            </div>  
+            <div class="song" onclick="playSong('https://open.spotify.com/track/56zZ48jdyY2oDXHVnwg5Di?si=8IagFlA2SFS4nEeVtwAXew', this)">  
+                <span class="song-title">Tum Hi Ho</span>  
+                <span class="song-note">This song expresses how special you are to me...</span>  
+            </div>  
+        </div>  
+        <audio id="current-song"></audio>  
+    </div>  
 
-        <div class="gif_container">
-            <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbW5lenZyZHI5OXM2eW95b3pmMG40cWVrMDhtNjVuM3A4dGNxa2g2dSZlcD12MV9pbnRlcm5naWZfYnlfaWQmY3Q9cw/VM1fcpu2bKs1e2Kdbj/giphy.gif" alt="Cute GIF">
-        </div>
+    <!-- Memory Gallery -->  
+    <div class="memory-gallery">  
+        <h3>Our 10th B Memories</h3>  
+        <div class="memories-container">  
+            <div class="memory-card" onclick="flipCard(this)">  
+                <div class="memory-front">School Days</div>  
+                <div class="memory-back">The way you help everyone with their studies shows your beautiful heart</div>  
+            </div>  
+            <div class="memory-card" onclick="flipCard(this)">  
+                <div class="memory-front">Class Memories</div>  
+                <div class="memory-back">Memories? you are the memory of our class and no one can foeget it</div>  
+            </div>  
+            <div class="memory-card" onclick="flipCard(this)">  
+                <div class="memory-front">10th B Special</div>  
+                <div class="memory-back">You make our section the best with your kindness and wisdom!</div>  
+            </div>  
+        </div>  
+    </div>  
+</div>  
 
-        <audio id="bg-music" loop>
-            <source src="https://pagalworld.com.se/files/download/id/64684" type="audio/mp3">
-        </audio>
+<!-- Background Music - Hidden but kept for compatibility -->  
+<audio id="bg-music" loop>  
+    <source src="https://pagalworld.com.se/files/download/id/64684" type="audio/mp3">  
+</audio>  
 
-    </div>
+<script src="script.js"></script>
 
-    <script src="script.js"></script>
-</body>
-</html>
+</body>  
+</html>  
