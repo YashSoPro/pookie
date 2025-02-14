@@ -1,20 +1,83 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f9e3e3;
+    font-family: 'Arial', sans-serif;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Container */
+.container {
+    text-align: center;
+}
+
+/* Heading */
+h1 {
+    font-size: 2.5em;
+    color: #d32f2f;
+}
+
+/* Buttons */
+.buttons {
+    margin-top: 20px;
+}
+
+.yes-button, .no-button {
+    font-size: 1.5em;
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.yes-button {
+    background-color: #4caf50;
+    color: white;
+}
+
+.no-button {
+    background-color: #f44336;
+    color: white;
+}
+
+.yes-button:hover {
+    transform: scale(1.1);
+    background-color: #388e3c;
+}
+
+.no-button:hover {
+    transform: scale(1.1);
+    background-color: #d32f2f;
+}
+
+/* GIF */
+.gif_container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
 /* Floating hearts */
 .heart-container {
     position: absolute;
     width: 100%;
     height: 100%;
     overflow: hidden;
-    top: 0;
-    left: 0;
-    z-index: 0; /* Ensure hearts stay behind other elements */
 }
 
 .heart {
     position: absolute;
+    top: -10px;
     font-size: 20px;
     color: red;
-    animation: float 5s linear forwards;
-    opacity: 0.8;
+    animation: float 5s linear infinite;
 }
 
 @keyframes float {
