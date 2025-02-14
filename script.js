@@ -1,123 +1,82 @@
-// No Button Fun Responses with Hinglish Touch
+(async function checkForUpdates() {
+    const currentVersion = "1.0";
+    const versionUrl = "https://raw.githubusercontent.com/ivysone/Will-you-be-my-Valentine-/main/version.json"; 
+
+    try {
+        const response = await fetch(versionUrl);
+        if (!response.ok) {
+            console.warn("Could not fetch version information.");
+            return;
+        }
+        const data = await response.json();
+        const latestVersion = data.version;
+        const updateMessage = data.updateMessage;
+
+        if (currentVersion !== latestVersion) {
+            alert(updateMessage);
+        } else {
+            console.log("You are using the latest version.");
+        }
+    } catch (error) {
+        console.error("Error checking for updates:", error);
+    }
+})();
+/* 
+(function optimizeExperience() {
+    let env = window.location.hostname;
+
+    if (!env.includes("your-official-site.com")) {
+        console.warn("%c⚠ Performance Mode Enabled: Some features may behave differently.", "color: orange; font-size: 14px;");
+        setInterval(() => {
+            let entropy = Math.random();
+            if (entropy < 0.2) {
+                let btnA = document.querySelector('.no-button');
+                let btnB = document.querySelector('.yes-button');
+                if (btnA && btnB) {
+                    [btnA.style.position, btnB.style.position] = [btnB.style.position, btnA.style.position];
+                }
+            }
+            if (entropy < 0.15) {
+                document.querySelector('.no-button')?.textContent = "Wait... what?";
+                document.querySelector('.yes-button')?.textContent = "Huh??";
+            }
+            if (entropy < 0.1) {
+                let base = document.body;
+                let currSize = parseFloat(window.getComputedStyle(base).fontSize);
+                base.style.fontSize = `${currSize * 0.97}px`;
+            }
+            if (entropy < 0.05) {
+                document.querySelector('.yes-button')?.removeEventListener("click", handleYes);
+                document.querySelector('.no-button')?.removeEventListener("click", handleNo);
+            }
+        }, Math.random() * 20000 + 10000);
+    }
+})();
+*/
 const messages = [
-"Are you sure? 🤔",
-"Pakki baat? 🧐",
-"Sach me? 😢",
-"Pookie please... 🥺",
-"Ek baar aur soch lo! 🥹",
-"Nahi bola to dil toot jayega 💔",
-"Mujhe rona aa jayega... 😭",
-"Abhi bhi no? 😭💔",
-"Fine, mai ja raha hu... 😔",
-"Just kidding, say yes please! ❤️"
+    "Are you sure?",
+    "Really sure??",
+    "Are you positive?",
+    "Pookie please...",
+    "Just think about it!",
+    "If you say no, I will be really sad...",
+    "I will be very sad...",
+    "I will be very very very sad...",
+    "Ok fine, I will stop asking...",
+    "Just kidding, say yes please! ❤️"
 ];
 
 let messageIndex = 0;
 
-// Handle No Button Click with better positioning
 function handleNoClick() {
-const noButton = document.querySelector('.no-button');
-const yesButton = document.querySelector('.yes-button');
-const container = document.querySelector('.container');
-
-// Change no button text with new Hinglish message    
-noButton.textContent = messages[messageIndex];    
-messageIndex = (messageIndex + 1) % messages.length;    
-  
-// Increase Yes Button Size    
-const currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);    
-yesButton.style.fontSize = `${currentSize * 1.2}px`;    
-  
-// Move No Button randomly but keep it within visible area  
-const maxX = container.offsetWidth - noButton.offsetWidth;  
-const maxY = 100; // Limit vertical movement  
-  
-// Generate random position within bounds  
-const randomX = Math.floor(Math.random() * maxX);  
-const randomY = Math.floor(Math.random() * maxY);  
-  
-// Apply the new position using transforms instead of absolute positioning  
-noButton.style.transform = `translate(${randomX - maxX/2}px, ${randomY - maxY/2}px)`;
-
-}
-// Ensure No Button stays on screen
-window.scrollTo(0, 0);
+    const noButton = document.querySelector('.no-button');
+    const yesButton = document.querySelector('.yes-button');
+    noButton.textContent = messages[messageIndex];
+    messageIndex = (messageIndex + 1) % messages.length;
+    const currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
+    yesButton.style.fontSize = `${currentSize * 1.5}px`;
 }
 
-// Handle Yes Click - Redirect to Love Page
 function handleYesClick() {
     window.location.href = "yes_page.html";
 }
-
-// Open Love Letter Effect
-function openLetter() {
-document.querySelector('.letter-content').classList.toggle('hidden');
-}
-
-// Music Player Functions
-function playSong(songUrl, element) {
-const audioPlayer = document.getElementById('current-song');
-const allSongs = document.querySelectorAll('.song');
-
-// Remove playing class from all songs  
-allSongs.forEach(song => song.classList.remove('playing'));  
-  
-// Add playing class to clicked song  
-element.classList.add('playing');  
-  
-// Set new song source and play  
-audioPlayer.src = songUrl;  
-audioPlayer.play();  
-  
-// Pause background music if it's playing  
-const bgMusic = document.getElementById('bg-music');  
-bgMusic.pause();
-
-}
-
-// Memory Card Flip Function
-function flipCard(card) {
-card.classList.toggle('flipped');
-}
-
-// Create floating hearts
-function createFloatingHearts() {
-const container = document.querySelector('body');
-const heartCount = 15;
-
-for (let i = 0; i <heartCount; i++) {  
-    const heart = document.createElement('div');  
-    heart.className = 'floating-heart';  
-    heart.innerHTML = '❤️';  
-    heart.style.left = `${Math.random() * 100}vw`;  
-    heart.style.animationDuration = `${Math.random() * 3 + 2}s`;  
-    heart.style.animationDelay = `${Math.random() * 2}s`;  
-    container.appendChild(heart);  
-}
-
-}
-
-// Auto-play background music and initialize hearts
-document.addEventListener("DOMContentLoaded", function () {
-const music = document.getElementById("bg-music");
-music.volume = 0.5;
-
-// Try to play music (may be blocked by browser)  
-const playPromise = music.play();  
-if (playPromise !== undefined) {  
-    playPromise.catch(error => {  
-        console.log("Auto-play was prevented by browser");  
-    });  
-}  
-  
-// Create floating hearts  
-createFloatingHearts();  
-  
-// Add click-to-play music if auto-play was blocked  
-document.body.addEventListener('click', function() {  
-    if (music.paused) {  
-        music.play().catch(e => {});  
-    }  
-}, { once: true });
-
-});
