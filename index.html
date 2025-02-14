@@ -1,158 +1,28 @@
-(async function checkForUpdates() {
-    const currentVersion = "1.0";
-    const versionUrl = "https://raw.githubusercontent.com/ivysone/Will-you-be-my-Valentine-/main/version.json"; 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine?</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Will you be my Valentine?</h1>
+        <div class="buttons">
+            <button class="yes-button" onclick="handleYesClick()">Yes</button>
+            <button class="no-button" onclick="handleNoClick()">No</button>
+        </div>
+        <div class="gif_container">
+            <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbW5lenZyZHI5OXM2eW95b3pmMG40cWVrMDhtNjVuM3A4dGNxa2g2dSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/VM1fcpu2bKs1e2Kdbj/giphy.gif" alt="Cute GIF">
+        </div>
+    </div>
 
-    try {
-        const response = await fetch(versionUrl);
-        if (!response.ok) {
-            console.warn("Could not fetch version information.");
-            return;
-        }
-        const data = await response.json();
-        const latestVersion = data.version;
-        const updateMessage = data.updateMessage;
+    <script src="script.js"></script>
 
-        if (currentVersion !== latestVersion) {
-            alert(updateMessage);
-        } else {
-            console.log("You are using the latest version.");
-        }
-    } catch (error) {
-        console.error("Error checking for updates:", error);
-    }
-})();
-
-// Music functionality
-document.addEventListener("DOMContentLoaded", () => {
-    const audio = document.getElementById('background-music');
-    const volumeSlider = document.getElementById('volumeSlider');
-
-    // Play music when the user hovers over the page
-    document.body.addEventListener('mouseover', () => {
-        if (audio.paused) {
-            audio.play();
-        }
-    });
-
-    // Adjust volume using slider
-    volumeSlider.addEventListener("input", () => {
-        audio.volume = volumeSlider.value;
-    });
-});
-
-// Stars falling effect
-document.addEventListener("DOMContentLoaded", () => {
-    const starContainer = document.querySelector(".stars");
-
-    function createStar() {
-        const star = document.createElement("div");
-        star.classList.add("star");
-
-        star.style.left = Math.random() * 100 + "vw";
-        star.style.animationDuration = Math.random() * 3 + 2 + "s";
-        star.style.animationDelay = Math.random() * 5 + "s";
-
-        starContainer.appendChild(star);
-
-        setTimeout(() => {
-            star.remove();
-        }, 5000);
-    }
-
-    setInterval(createStar, 300);
-});
-
-const messages = [
-    "Are you sure?",
-    "Really sure??",
-    "Are you positive?",
-    "Pookie please...",
-    "Just think about it!",
-    "If you say no, I will be really sad...",
-    "I will be very sad...",
-    "I will be very very very sad...",
-    "Ok fine, I will stop asking...",
-    "Just kidding, say yes please! ❤️"
-];
-
-let messageIndex = 0;
-
-function handleNoClick() {
-    const noButton = document.querySelector('.no-button');
-    const yesButton = document.querySelector('.yes-button');
-    noButton.textContent = messages[messageIndex];
-    messageIndex = (messageIndex + 1) % messages.length;
-    const currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
-    yesButton.style.fontSize = `${currentSize * 1.5}px`;
-}
-
-function handleYesClick() {
-    window.location.href = "yes_page.html";
-}
-
-let isAnimating = false;  // Flag to track if the animation is running
-document.addEventListener("DOMContentLoaded", () => {
-    const textElement = document.getElementById("animated-text");
-    const text = textElement.textContent; // Get initial text
-    textElement.textContent = ""; // Clear original text
-    let index = 0;
-
-    // Delay the start of the animation by 1 second
-    setTimeout(() => {
-        // Start initial animation if not already animating
-        if (!isAnimating) {
-            isAnimating = true; // Set flag to indicate animation is in progress
-            function typeLetter() {
-                if (index < text.length) {
-                    textElement.textContent += text[index]; // Add the next letter
-                    index++;
-                    setTimeout(typeLetter, 100); // Adjust speed (100ms per letter)
-                } else {
-                    isAnimating = false; // Reset flag when animation is done
-                }
-            }
-
-            typeLetter(); // Start typing the initial text after 1 second
-        }
-    }, 1000); // Delay before starting initial animation
-});
-
-function resetAndAnimateText(newText) {
-    const textElement = document.getElementById('animated-text');
-    
-    if (isAnimating) return; // Prevent starting the animation if it's already running
-    idx++;
-
-    isAnimating = true; // Set flag to indicate that animation is in progress
-    textElement.textContent = ''; // Clear current text
-    let index = 0;
-
-    // Function to animate text letter by letter
-    function typeLetter() {
-        if (index < newText.length) {
-            textElement.textContent += newText[index];
-            index++;
-            setTimeout(typeLetter, 100); // Adjust speed (100ms per letter)
-        } else {
-            isAnimating = false; // Reset flag when animation is done
-        }
-    }
-
-    // Start typing the new text
-    typeLetter();
-}
-
-idx = 0;
-idxMAX = 3;
-
-const textArray = [
-    "hmm just wanted to make something small as a token of appreciation.. and for vday, of course!",
-    "well this is just the beginning.. i'll be making it a lot better but this is a sneak peek :D",
-    "i hope you're having a good day love <3"
-];
-
-function handleButtonClick(){
-    if (idx < idxMAX) {
-        resetAndAnimateText(textArray[idx]);
-    }
-}
+    <!-- Background Music -->
+    <audio id="background-music" autoplay loop>
+        <source src="Sweden.mp3" type="audio/mp3">
+    </audio>
+</body>
+</html>
