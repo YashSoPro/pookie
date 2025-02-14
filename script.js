@@ -14,19 +14,31 @@ const messages = [
 
 let messageIndex = 0;
 
-// Handle No Button Click
+// Handle No Button Click with better positioning
 function handleNoClick() {
     const noButton = document.querySelector('.no-button');
     const yesButton = document.querySelector('.yes-button');
-
+    const container = document.querySelector('.container');
+    
     // Change no button text with new Hinglish message  
     noButton.textContent = messages[messageIndex];  
     messageIndex = (messageIndex + 1) % messages.length;  
-
+    
     // Increase Yes Button Size  
     const currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);  
     yesButton.style.fontSize = `${currentSize * 1.2}px`;  
-
+    
+    // Move No Button randomly but keep it within visible area
+    const maxX = container.offsetWidth - noButton.offsetWidth;
+    const maxY = 100; // Limit vertical movement
+    
+    // Generate random position within bounds
+    const randomX = Math.floor(Math.random() * maxX);
+    const randomY = Math.floor(Math.random() * maxY);
+    
+    // Apply the new position using transforms instead of absolute positioning
+    noButton.style.transform = `translate(${randomX - maxX/2}px, ${randomY - maxY/2}px)`;
+}
     // Ensure No Button stays on screen  
     window.scrollTo(0, 0);
 }
