@@ -1,102 +1,208 @@
- * General Page Styling /
+:root {
+    --primary-color: #d32f2f;
+    --light-pink: #f9e3e3;
+    --dark-pink: #ffdde1;
+    --yes-color: #4caf50;
+    --no-color: #f44336;
+}
+
 body {
-display: flex;
-justify-content: center;
-align-items: center;
-height: 100vh;
-margin: 0;
-background-color: #f9e3e3;
-font-family: 'Arial', sans-serif;
-flex-direction: column;
-overflow: hidden; / Prevent scrolling */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: var(--light-pink);
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 50l-12 12c-4 4-4 10 0 14 4 4 10 4 14 0l10-10c4-4 4-10 0-14-4-4-10-4-14 0z' fill='%23ffb6c1' fill-opacity='0.2'/%3E%3C/svg%3E");
+    font-family: 'Arial', sans-serif;
+    padding: 20px;
+    overflow-x: hidden;
 }
 
 .container {
-text-align: center;
+    text-align: center;
+    max-width: 600px;
+    position: relative;
 }
 
-/* Title Styling */
 h1 {
-font-size: 2.5em;
-color: #d32f2f;
+    font-size: 2.5em;
+    color: var(--primary-color);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    animation: heartbeat 1.5s infinite alternate;
+}
+
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.05); }
 }
 
 /* Love Letter Effect */
 .love-letter {
-font-size: 1.3em;
-background-color: #fff;
-border: 2px solid #d32f2f;
-padding: 15px;
-display: inline-block;
-border-radius: 10px;
-cursor: pointer;
-margin-bottom: 15px;
-box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-transition: transform 0.3s ease;
+    font-size: 1.3em;
+    background-color: #fff;
+    border: 2px solid var(--primary-color);
+    padding: 15px;
+    display: inline-block;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom: 15px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.love-letter:before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    margin-left: -10px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #fff;
+    z-index: 1;
 }
 
 .love-letter:hover {
-transform: scale(1.05);
+    transform: scale(1.05);
+    box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
 }
 
 .click-text {
-font-style: italic;
-font-size: 0.9em;
-color: #888;
+    font-style: italic;
+    font-size: 0.9em;
+    color: #888;
 }
 
 /* Letter Content */
 .letter-content {
-font-size: 1.2em;
-background-color: #ffdde1;
-border: 2px solid #d32f2f;
-padding: 15px;
-display: inline-block;
-border-radius: 10px;
-width: 80%;
-max-width: 400px;
-box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    font-size: 1.2em;
+    background-color: var(--dark-pink);
+    border: 2px solid var(--primary-color);
+    padding: 15px;
+    display: inline-block;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 400px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    transform: scale(0.95);
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+.letter-content.visible {
+    transform: scale(1);
+    opacity: 1;
 }
 
 .hidden {
-display: none;
+    display: none;
+}
+
+/* Button Container */
+.buttons {
+    margin-top: 30px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
 }
 
 /* Button Styling */
-.buttons {
-margin-top: 20px;
-}
-
 .yes-button, .no-button {
-font-size: 1.5em;
-padding: 10px 20px;
-margin: 5px;
-border: none;
-border-radius: 5px;
-cursor: pointer;
-transition: transform 0.3s ease;
+    font-size: 1.5em;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    position: relative;
 }
 
 /* Yes Button */
 .yes-button {
-background-color: #4caf50;
-color: white;
+    background-color: var(--yes-color);
+    color: white;
+    transform-origin: center;
 }
 
-/* No Button - Fixed Position */
+.yes-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+}
+
+/* No Button */
 .no-button {
-background-color: #f44336;
-color: white;
-position: absolute;
-bottom: 20px;
-left: 50%;
-transform: translateX(-50%);
+    background-color: var(--no-color);
+    color: white;
+    transition: all 0.3s ease, top 0.2s ease, left 0.2s ease;
+}
+
+.no-button:hover {
+    transform: scale(0.95);
 }
 
 /* GIF Styling */
+.gif_container {
+    margin-top: 30px;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    max-width: 100%;
+}
+
 .gif_container img {
-max-width: 100%;
-height: auto;
-border-radius: 10px;
-margin-top: 20px;
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.gif_container:hover img {
+    transform: scale(1.05);
+}
+
+@media (max-width: 600px) {
+    .buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    
+    h1 {
+        font-size: 2em;
+    }
+    
+    .love-letter, .letter-content {
+        width: 85%;
+    }
+}
+
+/* Flying Hearts */
+.heart {
+    position: fixed;
+    font-size: 25px;
+    animation: fly-heart 4s linear infinite;
+    opacity: 0;
+}
+
+@keyframes fly-heart {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+    }
 }
